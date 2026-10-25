@@ -65,9 +65,9 @@ $girisli = !empty($_SESSION['atolye']);
 <?php else: ?>
   <div id="sahne" aria-live="polite"></div>
   <script>
-    window.ATOLYE = <?= json_encode(array('veri' => $VERI, 'anahtar' => $_SESSION['anahtar'], 'yz' => false), JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    window.ATOLYE = <?= json_encode(array('veri' => $VERI, 'anahtar' => $_SESSION['anahtar']), JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
   </script>
-  <script src="assets/atolye.js?v=10"></script>
+  <script src="assets/atolye.js?v=11"></script>
 <?php endif; ?>
 </body>
 </html>
