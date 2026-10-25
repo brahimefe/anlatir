@@ -7,7 +7,6 @@ function page_head($title, $active = '', $bodyClass = '')
     $kur = kur_aktif();
     $canli = $kur ? canli($kur['id']) : null;
     $nav = ($u || is_admin()) ? array_filter([
-        'dersler'  => ['dersler.php', 'Dersler'],
         'masa'     => ai_acik() ? ['masa.php', 'Haber Masası'] : null,
         'haberler' => ['haberler.php', 'Haberler'],
         'kurlar'   => ['arsiv.php', 'Kurlar'],
