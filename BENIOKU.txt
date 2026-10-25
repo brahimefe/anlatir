@@ -1,0 +1,141 @@
+ANLATIR SEMİNER — KURULUM (Hostinger)
+=======================================
+
+1) YÜKLEME
+   - hPanel > Dosya Yöneticisi > public_html klasörünü açın.
+   - Eski site dosyalarını bir yedek klasörüne taşıyın.
+   - Bu zip'i public_html içine yükleyip "Extract" deyin. index.php doğrudan public_html içinde olmalı.
+
+2) AYARLAR (config.local.php)
+   - Şifre ve API anahtarı config.local.php dosyasında durur. Bu dosya GitHub deposuna girmez;
+     sunucuda public_html içinde bir kez oluşturulur (örnek: config.local.ornek.php).
+   - 'egitmen_sifre'  : eğitmen paneli şifreniz.
+   - 'yapay_zeka'     : false = kapalı (varsayılan). Site yapay zekâsız tam çalışır.
+     true yapıp 'openai_api_key' alanına OpenAI anahtarınızı yazarsanız Haber Masası
+     (kaynakla karşılaştırma, haber denetleme, ses kaydını yazıya dökme) ve gönderimde
+     otomatik dipnot kontrolü açılır. Yapay zekâ hiçbir zaman haber metni yazmaz.
+   - Diğer ayarlar (sınırlar, saklama süresi) config.php'de; değiştirmek isterseniz aynı anahtarı
+     config.local.php'ye yazmanız yeterli.
+
+2b) GÜNCELLEME (GitHub → Hostinger)
+   - Kod GitHub'daki anlatir deposunda durur. Hostinger > anlatir.com > GIT / Deploy from GitHub
+     bağlantısıyla depoya gelen her değişiklik public_html'e kendiliğinden yüklenir.
+   - storage/ (hesaplar, haberler, oylamalar), uploads/foto/ (fotoğraflar) ve config.local.php
+     depoya girmez; güncellemeler bunlara dokunmaz.
+   - Bağlantı GitHub'daki Hostinger uygulamasıyla kuruludur (depo > Settings > GitHub Apps).
+     Ayrı bir webhook gerekmez.
+
+3) PHP SÜRÜMÜ VE SINIRLAR
+   - hPanel > Gelişmiş > PHP Yapılandırması: PHP 8.1 veya üstü seçin.
+   - Aynı ekranda upload_max_filesize = 40M, post_max_size = 45M, max_execution_time = 300 yapın
+     (ses kayıtları ve sunum PDF'leri için).
+   - "gd", "curl", "mbstring", "fileinfo" eklentileri açık olmalı (Hostinger'da varsayılan olarak açıktır).
+
+4) İLK KULLANIM
+   - alanadiniz.com/giris.php?rol=egitmen adresinden girin.
+   - Eğitmen paneli beş sekmedir: Bugün (yapılacaklar, canlı ders, haftanın haberi),
+     Gönderiler (inceleme, yayımlananlar, ödev takibi), Katılımcılar (kayıt onayı, yazar tanıtımları,
+     hesaplar), İçerik (haftalar, haber ekleme, örnek haberler, duyuru, ana sayfa, görseller, notlar),
+     Ayarlar (ders kodu, soru sonuçları, rapor, yedek, kuru kapatma).
+   - İçerik > Haftalar: her haftanın ders sayfası, ödevi, sunumu, canlı soruları, örnek haberi ve saha kartı
+     tek sayfada düzenlenir. Hafta düğmelerindeki yeşil nokta "hazır", turuncu nokta "eksik var" demektir.
+     "Varsayılana dön" o haftadaki değişikliklerinizi siler.
+   - İçerik > Haber ekle: kendi imzanızla haber, kurgusal örnek haber ya da bir katılımcı adına gönderi
+     (ödevini kâğıtta getiren ya da telefonla gönderemeyen kişi için). Fotoğraf ve altyazı aynı formda.
+   - İçerik > İmza, konular, alt bilgi: örnek haberlerdeki imza, sayfa altındaki yazı ve haber konuları
+     (adını değiştirme, gizleme, yeni konu ekleme) koda dokunmadan değişir.
+   - İçerik > Örnek haberler: sitenin kendi örneklerine "Fotoğraf ekle" ile temsilî fotoğraf eklenir.
+   - Kaydetmeden sayfadan çıkmaya çalışırsanız panel uyarır.
+   - Panelden yaptığınız değişiklikler storage/icerik.json ve storage/ornekler/ altında durur; GitHub
+     güncellemeleri bunlara dokunmaz ve paneldeki yedeğe dahildir.
+     Bekleyen iş olan sekmede kırmızı sayı görünür.
+   - "Yeni kur aç" ile kuru oluşturun (ör. "Arnavutköy · Ekim 2026"). Öğrenciler kayıt formundan kaydolur; siz Öğrenciler sekmesinden onaylarsınız.
+   - İçerik > Haftalar'dan her haftanın sunumunu PDF olarak yükleyin
+     (PowerPoint: Dosya > Farklı Kaydet > PDF). Sunumlar sonraki kurlarda da kullanılır.
+
+5) İLK DERSTEN ÖNCE: PROVA
+   - Salonda, ders saatinden önce iki üç telefonla deneyin: projeksiyonu açın, telefonla QR'ı okutun,
+     bir hazır soru gönderip cevaplayın. Salon Wi-Fi'si zayıfsa telefonunuzdan internet paylaşın.
+
+5b) DERS GÜNÜ
+   - Panelde "Canlı dersi başlat" > hafta seçin > "Dersi başlat".
+   - "Projeksiyonu aç" ile açılan pencereyi salondaki ekrana taşıyın, F tuşuyla tam ekran yapın.
+     Ders başlamadan önce ekranda "Derse katıl", büyük QR ve ders kodu görünür. Ders kodu her derste yenilenir; "Dersi bitir" ile geçersiz olur. Onaylı öğrenci QR'ı okutunca o haftanın katılımı kendiliğinden işlenir.
+   - Katılımcılar QR'ı okutup rumuz seçerek bağlanır; giriş gerekmez.
+   - Slaytları sunucu ekranından ← → tuşlarıyla ilerletin; telefonlar ve projeksiyon kendiliğinden güncellenir.
+   - "Anlık soru" bölümündeki hazır sorulardan birine dokunun ya da kendi sorunuzu yazın;
+     "Sonucu göster" deyince sonuçlar projeksiyona ve telefonlara gelir.
+   - Ders bitince "Dersi bitir": telefonlarda o haftanın ödevi ve son teslim tarihi görünür.
+   - Son teslim kendiliğinden belirlenir: o haftanın dersini başlattığınız andan 7 gün sonrası
+     (yani bir sonraki ders saati). Geç gönderilenler panelde "geç teslim" olarak işaretlenir.
+   - Bir hafta dersi yapılamazsa: Panel > Kur > "Ders yapmadan hafta aç". O haftanın içeriği ve ödevi
+     öğrencilere açılır; son teslim tarihi oluşmaz.
+   - Panel > Gönderiler > "Ödev takibi": seçtiğiniz haftada kimin gönderip kimin göndermediği.
+     Ders sayfalarını açtığınızda o haftanın teslim özetini ve ödev takibine bağlantıyı görürsünüz.
+   - Panelde "Anlık soru sonuçları": derste sorduğunuz soruların sonuçları birikir (anonim);
+     "CSV indir" ile Excel'de açabilirsiniz. Kur kapandıktan sonra da Kurlar sayfasından indirilebilir.
+
+6) KAYIT VE ONAY
+   - Katılımcılar telefonlarından kayıt olur (kod gerekmez). Panelde "Tümünü onayla".
+   - Hafta 2 ya da sonrasını başlattığınızda kayıt formu kendiliğinden kapanır; panelden yeniden açabilirsiniz.
+   - Şifresini unutan için panelde Katılımcılar > "Yeni şifre". Site e-posta göndermez.
+
+7) ÖDEVLER, HABERLER VE HAFTANIN HABERİ
+   - Ödevin türünü hafta belirler (inc/weeks.php > 'odev_turu'): Hafta 1–2 yazılı ödevdir, yalnızca siz görürsünüz;
+     Hafta 3'ten itibaren ödev, yayına aday bir haberdir. Öğrenci hafta seçince form kendiliğinden değişir.
+   - Yazılı ödevleri tek tek açmanız gerekmez: Gönderiler sekmesindeki "Yazılı ödevlerin tümünü Görüldü yap"
+     düğmesi hepsini kapatır; öğrenci Ödevim sayfasında "Eğitmen gördü" yazısını görür.
+   - Panelin en üstündeki "Yapılacaklar" listesi bekleyen kayıtları, yazar tanıtımlarını, incelenecek
+     gönderileri, eksik finalistleri ve yüklenmemiş sunumu gösterir; her madde ilgili yere götürür.
+   - Gönderiler panelde Gönderiler sekmesinde, "Onay bekleyen gönderiler" altında görünür. İncele > not yazın > Yayımla / Düzeltme iste.
+     Karar verince sıradaki gönderi kendiliğinden açılır. Not kutusunun altındaki hazır cümleler tek dokunuşla
+     eklenir; listeyi inc/notlar.php dosyasından değiştirebilirsiniz.
+   - Öğrenciler haberi taslak olarak kaydedebilir; taslakları yalnızca öğrenci görür.
+   - Her haberde yer (mahalle, ilçe) ve konu zorunludur. Konu listesi inc/bootstrap.php > konular().
+   - Öğrenci Profilim sayfasında rumuzunu, imza tercihini, şifresini ve yazar tanıtımını değiştirir.
+     Yazar tanıtımı sizin onayınızdan sonra haberlerin altında görünür.
+     Öğrenci, notunuzu siteye girince menüdeki kırmızı rozetten ve ana sayfadaki uyarıdan görür.
+   - Her haberde öğrencinin yapay zekâ beyanı vardır; beyan haberle birlikte yayımlanır.
+   - Yayımlanan haberlerden en fazla 3'ünü "Finalist yap" ile seçin. Haberin hangi haftada yazıldığı fark etmez.
+   - Oylamayı derste sunucu ekranından başlatın; kazanan o günkü dersin "haftanın haberi" olur.
+     Oy vermek için onaylı hesapla giriş gerekir; kendi haberine oy verilemez. Eşitlikte kazananı siz seçersiniz.
+   - Oylama bitmeden dersi bitirirseniz oylama iptal olur, finalistler korunur; sonraki derste yeniden başlatabilirsiniz.
+
+8) KUR BİTİNCE VE KURLAR SAYFASI
+   - Panel > Kur sekmesi > "Kuru kapat ve arşivle" (kutuya KAPAT yazın).
+   - Kapanan kur Kurlar sayfasında "Tamamlanan kurlar" altında listelenir. Kura tıklayınca: tarihler, katılımcı/gönderi/yayın sayıları,
+     haftanın haberleri ve yayımlanan haberler görünür. Katılımcı listesi yalnızca size görünür.
+   - Hesaplar ve yayımlanmamış gönderiler 60 gün sonra kendiliğinden silinir (config.php > 'saklama_gun');
+     yayımlanan haberler arşivde kalır.
+   - Panel > Kur > "Kur raporu": katılım, haftalara göre ödev teslimi, yayımlanan haberler, haftanın haberleri
+     ve soru sonuçlarını içeren yazdırılabilir özet (tarayıcıdan PDF olarak da kaydedilir).
+   - Bir kuru tamamen silmek için Kurlar sayfasında kurun altındaki "Kuru sil"e tıklayıp SİL yazın.
+     Kur, tüm haberleri ve fotoğraflarıyla kalıcı olarak silinir.
+   - Ardından panelde "Yeni kur aç" ile sıfırdan başlayın; ders içerikleri, örnek haberler ve sunumlar aynen kalır.
+
+9) DÜZENLEYEBİLECEĞİNİZ DOSYALAR
+   - inc/weeks.php      : 8 haftanın içeriği, fotoğraf bölümleri, ödevler, haftaya bağlı örnek haberler ve hazır canlı sorular.
+   - inc/ornekler.php   : Yoka Rtık imzalı örnek haberler (kurgusal). Yayımlanmış "haftanın haberi" yokken
+                          ana sayfada bunlar görünür ("Hatalı örnek" ana sayfaya çıkmaz).
+   - inc/notlar.php     : inceleme ekranındaki hazır not cümleleri.
+   - inc/canta.php      : hafta sayfalarındaki yazdırılabilir saha kartları (Hafta 2 kaynak listesi,
+                          Hafta 3 izin cümleleri ve röportaj soruları, Hafta 4 haber kontrol listesi).
+   - Görseller: Panel > Kur > "Sitenin görselleri". Ana sayfa açılış fotoğrafı (1920 x 1080), sayfa sonundaki
+     bant (1600 x 880) ve fotoğrafsız haberlerde görünen 3 yer tutucu (960 x 640) buradan değiştirilir.
+     Fotoğraf doğru yöne çevrilir, konum bilgisi silinir, ölçüye ortadan kırpılır ve sıkıştırılır.
+     "Öncekine dön" bir önceki görsele, "Varsayılana dön" depodaki yer tutucuya döner.
+     Yüklenenler uploads/site/ klasöründe durur; GitHub güncellemeleri bunlara dokunmaz.
+   - Fotoğraf kutusu: Panel > Kur > "Fotoğraf kutusu". Her fotoğrafın büyük (1600), orta (960) ve küçük (480)
+     boyu hazırlanır; düğmeler bağlantıyı kopyalar. Dosyalar uploads/medya/ klasöründedir.
+   - kullanim-izni.php, kvkk.php : yasal metin TASLAKLARI. Yayından önce bir hukukçuya kontrol ettirin.
+
+10) YEDEK
+   - Panel > Kur > "Yedeği indir": tüm veriler (storage ve uploads) tek zip dosyası olarak iner.
+     Dönem sonunda mutlaka alın.
+
+GÜVENLİK NOTLARI
+   - storage/ ve inc/ klasörleri tarayıcıdan açılamaz; uploads/ içinde betik çalıştırılamaz.
+   - Yüklenen fotoğraflar yeniden kaydedilir; konum (EXIF) bilgisi silinir.
+   - Yapay zekâ açıksa ses kayıtları yalnızca yazıya dökmek için OpenAI'ye gönderilir, sunucuda saklanmaz.
+   - Ders içerikleri (Dersler) yalnızca giriş yapmış öğrenciye ve size açıktır.
+   - Öğrenci başına günlük kullanım sınırları config.php'den ayarlanır.

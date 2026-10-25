@@ -1,0 +1,28 @@
+Options -Indexes
+DirectoryIndex index.php
+
+# Ayarlar dosyası tarayıcıdan açılamaz
+<FilesMatch "^(config(\.local|\.local\.ornek)?\.php|BENIOKU\.txt|\.user\.ini|\.gitignore)$">
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
+</FilesMatch>
+
+# Kısa katılım adresi: alanadiniz.com/katil
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^katil/?$ katil.php [L,QSA]
+</IfModule>
+
+# Yükleme sınırları (Hostinger'da etkisizse hPanel > PHP Ayarları'ndan yükseltin)
+<IfModule mod_php.c>
+  php_value upload_max_filesize 40M
+  php_value post_max_size 45M
+  php_value max_execution_time 300
+</IfModule>
+
+AddType application/javascript .js

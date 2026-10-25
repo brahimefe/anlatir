@@ -1,0 +1,11 @@
+# Sunucudaki veriler: depoya girmez, dağıtım bunlara dokunmaz
+/storage/*
+!/storage/.htaccess
+!/storage/.gitkeep
+/uploads/foto/*
+!/uploads/foto/.gitkeep
+/uploads/site/
+/uploads/medya/
+# Şifre ve API anahtarı
+/config.local.php
+.DS_Store
