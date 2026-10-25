@@ -1,0 +1,23 @@
+SAHNE GÖRSELLERİ
+
+Bu klasöre her aşama için bir sahne görseli yükleyin (jpg, png ya da webp).
+Görseller yalnızca atölyeye şifreyle giren kişiye gösterilir; bu klasör
+tarayıcıdan doğrudan adresle açılamaz ve arama motorlarına kapalıdır.
+Görsel yoksa atölye o aşamada sahne cümlesini gösterir.
+
+Harry Potter ve Felsefe Taşı      hp-01.jpg   … hp-12.jpg
+Örümcek-Adam: Örümcek Evreninde   sv-01.jpg   … sv-12.jpg
+Yüzüklerin Efendisi               lotr-01.jpg … lotr-12.jpg
+
+Numaralar Vogler'in 12 aşamasıdır:
+01 Olağan dünya            07 En derin mağaraya yaklaşma
+02 Maceraya çağrı          08 Büyük sınav
+03 Çağrının reddi          09 Ödül
+04 Akıl hocası             10 Dönüş yolu
+05 İlk eşiğin geçilmesi    11 Yeniden diriliş
+06 Sınavlar, dostlar,      12 İksirle dönüş
+   düşmanlar
+
+Öneriler: Görselleri küçük tutun (en fazla 1280 piksel genişlik, 300 KB civarı).
+Her aşamada hangi sahnenin seçileceği inc/veri.php içindeki "sahneler" listesinde yazar.
+Görselin altında yapımcı ve yıl künyesi otomatik gösterilir (inc/veri.php › 'kaynak').

@@ -11,9 +11,11 @@ function page_head($title, $active = '', $bodyClass = '')
         'masa'     => ai_acik() ? ['masa.php', 'Haber Masası'] : null,
         'haberler' => ['haberler.php', 'Haberler'],
         'kurlar'   => ['arsiv.php', 'Kurlar'],
+        'atolyeler' => ['atolyeler.php', 'Atölyeler'],
     ]) : [
         'haberler' => ['haberler.php', 'Haberler'],
         'kurlar'   => ['arsiv.php', 'Kurlar'],
+        'atolyeler' => ['atolyeler.php', 'Atölyeler'],
     ];
     ?><!doctype html>
 <html lang="tr">

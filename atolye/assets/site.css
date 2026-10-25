@@ -1,0 +1,108 @@
+/* anlatir.com — ortak stiller */
+:root{
+  color-scheme: dark;
+  --zemin:#15120E; --yuzey:#211C16; --yuzey2:#2A2117; --koyu:#1B1712;
+  --cizgi:#3A3228; --cizgi2:#5A4E3E; --ayrac:#2E271F;
+  --metin:#F4EEE3; --metin2:#D9CFBF; --ikincil:#B5AA98; --soluk:#8C7F6C; --silik:#6B5F4E;
+  --vurgu:#E8A33D; --vurgu2:#F2BD6A; --uyari:#E8836B; --iyi:#5FBF86;
+  --baslik:'Fraunces', Georgia, 'Times New Roman', serif;
+  --govde:'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--zemin);color:var(--metin);font-family:var(--govde)}
+a{color:var(--vurgu)} a:hover{color:var(--vurgu2)}
+button,input,select{font:inherit}
+:focus-visible{outline:3px solid var(--vurgu);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.kap{max-width:1440px;margin:0 auto;padding-inline:clamp(16px,5.5vw,80px)}
+.ust-cubuk{border-bottom:1px solid var(--ayrac)}
+.ust-cubuk .kap{height:88px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--baslik);font-size:30px;font-weight:600;color:var(--metin);text-decoration:none}
+.logo span{color:var(--vurgu)}
+.menu{display:flex;gap:clamp(16px,3vw,40px);font-size:18px;flex-wrap:wrap}
+.menu a{color:var(--metin);text-decoration:none}
+.menu a:hover{color:var(--vurgu)}
+.menu a.soluk{color:var(--ikincil)}
+
+.etiket{font-size:clamp(13px,1.2vw,18px);letter-spacing:3px;color:var(--ikincil);text-transform:uppercase}
+.dugme{display:inline-flex;align-items:center;justify-content:center;height:60px;padding:0 32px;border-radius:999px;font-size:20px;text-decoration:none;border:1px solid var(--cizgi2);color:var(--metin);background:transparent;cursor:pointer}
+.dugme.ana{background:var(--vurgu);color:#15120E;border:0;font-weight:600}
+.dugme.ana:hover{background:var(--vurgu2);color:#15120E}
+
+/* Anasayfa */
+.kahraman-alan{position:relative;height:660px;overflow:hidden}
+.kahraman-alan svg{position:absolute;inset:0;width:100%;height:100%}
+.kahraman-yazi{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;gap:28px;max-width:760px}
+.kahraman-yazi h1{margin:0;font-family:var(--baslik);font-weight:600;font-size:clamp(48px,6.4vw,92px);line-height:1;text-wrap:balance}
+.kahraman-yazi h1 em{color:var(--vurgu)}
+.kahraman-yazi p{margin:0;font-size:clamp(18px,1.7vw,24px);line-height:1.5;color:var(--metin2);max-width:680px}
+.kahraman-yazi .dugme{align-self:flex-start;background:rgba(21,18,14,.6);border-color:#8C7A5E}
+
+.bolum{padding-block:72px 80px;display:flex;flex-direction:column;gap:32px}
+.bolum h2{margin:0;font-family:var(--baslik);font-weight:600;font-size:clamp(32px,3vw,44px)}
+.izgara3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+@media (max-width:900px){.izgara3{grid-template-columns:1fr}}
+.kart{display:flex;flex-direction:column;gap:16px;padding:32px;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:20px;color:var(--metin);text-decoration:none}
+.kart.one{background:var(--yuzey2);border:2px solid var(--vurgu)}
+.kart.bos{background:transparent;border:1px dashed var(--cizgi)}
+.kart .rozet{align-self:flex-start;padding:6px 14px;border:1px solid var(--cizgi2);font-size:15px;border-radius:999px;color:var(--ikincil)}
+.kart.one .rozet{background:var(--vurgu);color:#15120E;border:0;font-weight:600}
+.kart h3{margin:0;font-family:var(--baslik);font-size:32px;font-weight:600}
+.kart p{margin:0;font-size:19px;line-height:1.5;color:var(--metin2)}
+.kart .alt{margin-top:auto;font-size:18px;color:var(--soluk)}
+.kart.one .alt{color:var(--vurgu)}
+.alt-cubuk{border-top:1px solid var(--ayrac)}
+.alt-cubuk .kap{height:88px;display:flex;align-items:center;font-size:17px;color:var(--soluk)}
+
+/* Monomit sayfası */
+.m-giris{padding-block:88px 72px;display:flex;gap:72px;align-items:center}
+.m-giris h1{margin:0;font-family:var(--baslik);font-weight:600;font-size:clamp(52px,6.6vw,96px);line-height:.98}
+.m-giris h1 em{color:var(--vurgu)}
+.m-giris p{margin:0;font-size:clamp(18px,1.7vw,24px);line-height:1.55;color:var(--metin2);max-width:760px}
+.m-sayilar{display:flex;gap:40px;flex-wrap:wrap;padding-top:8px}
+.m-sayilar b{display:block;font-family:var(--baslik);font-size:40px;font-weight:600;color:var(--vurgu)}
+.m-sayilar span{font-size:16px;color:var(--ikincil)}
+@media (max-width:900px){.m-giris{flex-direction:column}.m-giris svg{max-width:100%;height:auto}}
+.m-bolum{padding-block:56px;border-top:1px solid var(--ayrac);display:flex;flex-direction:column;gap:30px}
+.m-bolum h2{margin:0;font-family:var(--baslik);font-weight:600;font-size:clamp(32px,3.4vw,48px);text-wrap:balance}
+.m-bolum .aciklama{margin:0;font-size:20px;line-height:1.55;color:var(--metin2);max-width:980px}
+.izgara4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+@media (max-width:1100px){.izgara4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.izgara4{grid-template-columns:1fr}}
+.kutu{display:flex;flex-direction:column;gap:12px;padding:28px;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:20px}
+.kutu .ust{font-size:15px;color:var(--vurgu)}
+.kutu h3{margin:0;font-family:var(--baslik);font-size:24px;font-weight:600}
+.kutu p{margin:0;font-size:17px;line-height:1.55;color:var(--metin2)}
+.hareket{display:flex;flex-direction:column;gap:14px;padding:32px;border-top:3px solid var(--vurgu);background:var(--koyu)}
+.hareket h3{margin:0;font-family:var(--baslik);font-size:36px;font-weight:600}
+.hareket p{margin:0;font-size:18px;line-height:1.6;color:var(--metin2)}
+.hareket small{font-size:15px;color:var(--soluk)}
+.kasif{display:flex;gap:40px;align-items:stretch}
+@media (max-width:1000px){.kasif{flex-direction:column}}
+.kasif-sol{flex:0 0 560px;display:flex;flex-direction:column;gap:22px;max-width:100%}
+.kasif-sol h4{margin:0 0 10px;font-family:var(--baslik);font-size:22px;font-weight:600;color:var(--vurgu)}
+.hap-dizi{display:flex;flex-wrap:wrap;gap:8px}
+.hap{height:40px;padding:0 14px;border-radius:999px;font-size:15px;background:transparent;color:var(--metin2);border:1px solid var(--cizgi);cursor:pointer}
+.hap.secili{background:var(--vurgu);color:#15120E;border:0;font-weight:600}
+.kasif-sag{flex:1;padding:40px;display:flex;flex-direction:column;gap:18px;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:24px;min-height:560px}
+.kasif-sag h3{margin:0;font-family:var(--baslik);font-weight:600;font-size:clamp(34px,3.6vw,52px);line-height:1.05;color:var(--vurgu)}
+.kasif-sag .en{font-size:18px;font-style:italic;color:var(--soluk)}
+.kasif-sag p{margin:0;font-size:clamp(18px,1.6vw,23px);line-height:1.6}
+.kasif-alt{margin-top:auto;display:flex;gap:32px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--cizgi)}
+.kasif-alt span{display:block;font-size:14px;letter-spacing:2px;color:var(--soluk)}
+.kasif-alt b{font-weight:400;font-size:18px;color:var(--metin2)}
+.yuvarlak{width:44px;height:44px;border-radius:50%;border:1px solid var(--cizgi2);background:transparent;color:var(--metin);font-size:20px;cursor:pointer}
+.yuvarlak.ana{background:var(--vurgu);color:#15120E;border:0;font-weight:600}
+.tablo-kap{overflow-x:auto}
+.tablo{width:100%;border-collapse:collapse;min-width:760px}
+.tablo th{text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--cizgi);font-size:14px;letter-spacing:2px;color:var(--soluk);font-weight:400}
+.tablo th.film{font-size:15px;letter-spacing:0;color:var(--vurgu);font-weight:600}
+.tablo td{padding:13px 16px 13px 0;border-bottom:1px solid var(--ayrac);font-size:17px;color:var(--metin2);vertical-align:top}
+.tablo td:first-child{color:var(--metin);font-weight:600}
+.not-kutu{padding:28px 32px;background:var(--yuzey);border:1px solid var(--cizgi);border-radius:20px;font-size:20px;line-height:1.6;color:var(--metin2)}
+.not-kutu b{font-family:var(--baslik);color:var(--metin)}
+.kapanis-satir{padding-block:56px;border-top:1px solid var(--ayrac);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.kapanis-satir .buyuk{font-family:var(--baslik);font-size:clamp(28px,2.8vw,40px);font-weight:600}
+.kapanis-satir em{color:var(--vurgu)}

@@ -9,3 +9,8 @@
 # Şifre ve API anahtarı
 /config.local.php
 .DS_Store
+# Kahramanın Tercihi atölyesi: şifre dosyası ve sahne görselleri depoya girmez
+/atolye/inc/config.php
+/atolye/sahneler/*
+!/atolye/sahneler/.htaccess
+!/atolye/sahneler/BENIOKU.txt
